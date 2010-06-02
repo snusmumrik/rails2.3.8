@@ -1,0 +1,19 @@
+ja: 
+  activerecord: 
+    models: 
+      user: "ユーザー"  #g
+
+    attributes: 
+      user: 
+        login: "ログイン"  #g
+        name: "名前"  #g
+        email: "Eメール"  #g
+        crypted_password: "暗号化されたパスワード"  #g
+        salt: "ソルト"  #g
+        remember_token: "トークンしています。"  #g
+        remember_token_expires_at: "トークンしています。で有効期限が切れる"  #g
+        activation_code: "アクティベーションコード"  #g
+        activated_at: "で活性化さ"  #g
+        state: "状態"  #g
+        deleted_at: "で削除"  #g
+

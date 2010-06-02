@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
+  # include AuthenticatedSystem
   
   # Protect these actions behind an admin login
   # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
   before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge]
-  
+
+  # login required except signup
+  # before_filter :login_required , :except => [:new]
+  before_filter :login_required , :only => [:edit, :update, :destroy]
 
   # render new.rhtml
   def new
@@ -32,6 +35,7 @@ class UsersController < ApplicationController
     case
     when (!params[:activation_code].blank?) && user && !user.active?
       user.activate!
+      session[:email] = user.email
       flash[:notice] = "Signup complete! Please sign in to continue."
       redirect_to '/login'
     when params[:activation_code].blank?

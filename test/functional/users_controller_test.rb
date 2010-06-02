@@ -18,10 +18,10 @@ class UsersControllerTest < ActionController::TestCase
     end
   end
 
-  def test_should_require_login_on_signup
+  def test_should_require_email_on_signup
     assert_no_difference 'User.count' do
-      create_user(:login => nil)
-      assert assigns(:user).errors.on(:login)
+      create_user(:email => nil)
+      assert assigns(:user).errors.on(:email)
       assert_response :success
     end
   end
@@ -64,11 +64,11 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   def test_should_activate_user
-    assert_nil User.authenticate('aaron', 'test')
+    assert_nil User.authenticate('aaron@example.com', 'test')
     get :activate, :activation_code => users(:aaron).activation_code
-    assert_redirected_to '/session/new'
+    assert_redirected_to '/login'
     assert_not_nil flash[:notice]
-    assert_equal users(:aaron), User.authenticate('aaron', 'monkey')
+    assert_equal users(:aaron), User.authenticate('aaron@example.com', 'monkey')
   end
   
   def test_should_not_activate_user_without_key

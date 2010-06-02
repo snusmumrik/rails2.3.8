@@ -26,10 +26,10 @@ class UserTest < ActiveSupport::TestCase
   end
 
 
-  def test_should_require_login
+  def test_should_require_email
     assert_no_difference 'User.count' do
-      u = create_user(:login => nil)
-      assert u.errors.on(:login)
+      u = create_user(:email => nil)
+      assert u.errors.on(:email)
     end
   end
 
@@ -56,16 +56,16 @@ class UserTest < ActiveSupport::TestCase
 
   def test_should_reset_password
     users(:quentin).update_attributes(:password => 'new password', :password_confirmation => 'new password')
-    assert_equal users(:quentin), User.authenticate('quentin', 'new password')
+    assert_equal users(:quentin), User.authenticate('quentin@example.com', 'new password')
   end
 
   def test_should_not_rehash_password
-    users(:quentin).update_attributes(:login => 'quentin2')
-    assert_equal users(:quentin), User.authenticate('quentin2', 'monkey')
+    users(:quentin).update_attributes(:email => 'quentin2@example.com')
+    assert_equal users(:quentin), User.authenticate('quentin2@example.com', 'monkey')
   end
 
   def test_should_authenticate_user
-    assert_equal users(:quentin), User.authenticate('quentin', 'monkey')
+    assert_equal users(:quentin), User.authenticate('quentin@example.com', 'monkey')
   end
 
   def test_should_set_remember_token
@@ -89,7 +89,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not_nil users(:quentin).remember_token_expires_at
     assert users(:quentin).remember_token_expires_at.between?(before, after)
   end
-
+  
   def test_should_remember_me_until_one_week
     time = 1.week.from_now.utc
     users(:quentin).remember_me_until time
@@ -97,7 +97,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not_nil users(:quentin).remember_token_expires_at
     assert_equal users(:quentin).remember_token_expires_at, time
   end
-
+  
   def test_should_remember_me_default_two_weeks
     before = 2.weeks.from_now.utc
     users(:quentin).remember_me

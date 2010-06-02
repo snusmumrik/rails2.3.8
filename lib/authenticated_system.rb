@@ -15,6 +15,7 @@ module AuthenticatedSystem
     # Store the given user id in the session.
     def current_user=(new_user)
       session[:user_id] = new_user ? new_user.id : nil
+      session[:email] = new_user ? new_user.email : nil
       @current_user = new_user || false
     end
 
@@ -33,6 +34,11 @@ module AuthenticatedSystem
     #
     def authorized?(action = action_name, resource = nil)
       logged_in?
+    end
+
+    # only allow the admin
+    def admin_authorized?
+      current_user.id == 1
     end
 
     # Filter method to enforce a login requirement.
@@ -110,8 +116,8 @@ module AuthenticatedSystem
 
     # Called from #current_user.  Now, attempt to login by basic authentication information.
     def login_from_basic_auth
-      authenticate_with_http_basic do |login, password|
-        self.current_user = User.authenticate(login, password)
+      authenticate_with_http_basic do |email, password|
+        self.current_user = User.authenticate(email, password)
       end
     end
     
@@ -139,6 +145,7 @@ module AuthenticatedSystem
       @current_user = false     # not logged in, and don't do it for me
       kill_remember_cookie!     # Kill client-side auth cookie
       session[:user_id] = nil   # keeps the session but kill our variable
+      session[:email] = nil
       # explicitly kill any other session variables you set
     end
 
