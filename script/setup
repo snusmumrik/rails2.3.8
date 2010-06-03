@@ -1,0 +1,4 @@
+#!/bin/sh
+cp config/database.yml.sample config/database.yml
+cp config/initializers/mail.rb.sample config/initializers/mail.rb
+cp config/initializers/session_store.rb.sample config/initializers/session_store.rb
