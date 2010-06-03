@@ -1,0 +1,7 @@
+.DS_Store
+config/database.yml
+config/initializers/mail.rb
+config/initializers/session_store.rb
+README
+log
+tmp
