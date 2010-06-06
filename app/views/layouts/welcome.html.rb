@@ -6,6 +6,8 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Welcome: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold' %>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
 </head>
 <body>
 

@@ -1,0 +1,13 @@
+<div id="menu"><br />
+	<font size="-1">
+	0.<%= link_to 'Home', {:controller => "welcome", :action => "index"}, :title => "0.home", :accesskey => "0" %><br />
+	<% unless logged_in? %>
+		4.<%= link_to 'Signin', new_session_path, :title => "4.signin", :accesskey => "4" %><br />
+		5.<%= link_to 'Signup', new_user_path, :title => "5.signup", :accesskey => "5" %><br />
+	<% else %>
+		4.<%= link_to 'Users', edit_user_path(session[:user_id]), :title => "4.users", :accesskey => "4" %><br />
+		5.<%= link_to 'Logout', session_path, :method => :destroy, :title => "5.logout", :accesskey => "5" %><br />
+	<% end %>
+	</font><br />
+</div >
+<!-- end div#menu -->
