@@ -1,0 +1,27 @@
+<h1><%= t('label.user.edit_user') %></h1>
+
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label t('label.user.name') %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label t('label.user.email') %><br />
+    <%= f.text_field :email %>
+  </p>
+	<p>
+		<%= f.label t('label.user.password') %><br />
+		<%= f.password_field :password %>
+	</p>
+	<p>
+		<%= f.label t('label.user.password_confirmation') %><br />
+		<%= f.password_field :password_confirmation %>
+	</p>
+	<p>
+    <%= f.submit t('link.update') %>
+  </p>
+<% end %>
+
+<%= link_to_function t('link.back'), 'history.back()' %>

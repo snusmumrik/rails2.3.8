@@ -1,0 +1,12 @@
+<p>
+  <b>Name:</b>
+  <%=h @user.name %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%=h @user.email %>
+</p>
+
+<%= link_to t('link.edit'), edit_user_path(@user) %> |
+<%= link_to_function(t('link.back'), "history.go(-2)") %>

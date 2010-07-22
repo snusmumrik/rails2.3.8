@@ -7,7 +7,7 @@
 ActionController::Base.session = {
   :key         => 'session_id',
 	:cookie_only => false,
-  :secret      => ''
+  :secret      => 'some secret phrase of at least 30 characters'
 }
 
 # Use the database for sessions instead of the cookie-based default,

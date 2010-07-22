@@ -36,6 +36,11 @@ module AuthenticatedSystem
       logged_in?
     end
 
+    # only allow the owner
+    def owner_authorized?(id)
+      current_user.id == id
+    end
+
     # only allow the admin
     def admin_authorized?
       current_user.id == 1

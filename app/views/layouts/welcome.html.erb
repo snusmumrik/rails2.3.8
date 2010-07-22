@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Welcome: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'scaffold' %>
+	<%= stylesheet_link_tag 'vertebrate/default' %>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+</head>
+<body>
+
+	<div id="wrapper">
+	<div id="header">
+		<div id="logo">
+			<h1><%= link_to 'Rails', '/' %></h1>
+			<h2><%= link_to 'subtitle', '#'%></h2>
+		</div>
+		<!-- end div#logo -->
+		<%= render :partial => "/layouts/menu" %>
+	</div>
+	<div>
+		<div id="page">
+			<div id="page-bgtop">
+				<div id="content">
+					<div class="post">
+						<div class="post-bgtop">
+							<div class="post-bgbtm">
+								<div class="entry">
+									<p style="color: green"><%= flash[:notice] %></p>
+									<p style="color: red"><%= flash[:error] %></p>
+
+									<p><%= yield %></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end div#content -->
+				<%= render :partial => "/layouts/sidebar" %>
+			</div>
+		</div>
+		<!-- end div#page -->
+	</div>
+	<!-- end div#wrapper -->
+</body>
+</html>

@@ -9,8 +9,8 @@ require "smtp_tls"
 #   POP_SERVER = {
 #     :address => 'mail.MyDNS.JP',
 #     :port => 995,
-#     :account => 'mydns28275',
-#     :password => 'vH3Dsty4'
+#     :account => '',
+#     :password => ''
 #     }
 #   IMAP_SERVER = {
 #     :address => 'imap.gmail.com',

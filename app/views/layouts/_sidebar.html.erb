@@ -1,0 +1,24 @@
+<div id="sidebar">
+	<div id="sidebar-bgtop">
+		<div id="sidebar-bgbtm">
+			<ul>
+				<li id="search">
+					<h2>Search</h2>
+					<form method="get" action="">
+						<fieldset>
+							<input type="text" id="seach-text" name="s" value="" />
+							<input type="submit" id="search-submit" value="Search" />
+						</fieldset>
+					</form>
+				</li>
+				<li>
+					<h2>Side Menu</h2>
+					<ul>
+						<li><%= link_to t('link.home'), :controller => "welcome" %></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- end div#sidebar -->
