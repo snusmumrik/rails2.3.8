@@ -1,7 +1,9 @@
 .DS_Store
+config/amazonrc
 config/database.yml
 config/initializers/mail.rb
 config/initializers/session_store.rb
+public/images/store/images
 README
 log
 tmp

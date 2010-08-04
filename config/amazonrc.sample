@@ -1,0 +1,13 @@
+[global]
+key_id        = ''
+secret_key_id = ''
+associate     = ''
+locale        = 'jp'
+cache         = true
+cache_dir     = 'tmp/amazon'
+
+[us]
+associate     = ''
+
+[uk]
+associate     = ''

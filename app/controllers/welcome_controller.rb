@@ -5,6 +5,32 @@ class WelcomeController < ApplicationController
     #                         :conditions => 'posts.deleted_at IS NULL',
     #                         :per_page => 10, 
     #                         :page => params[:page])
+
+    begin
+      brand_category = 0
+      brand_name = 'adidas'
+      @amazon_recommendations = AmazonAwsSearch.item_search(brand_category, {'Brand' => brand_name})
+      @height_ex_array = []
+      @width_ex_array = []
+      @amazon_recommendations.each do |r|
+        if r.medium_image.height.to_i > 130
+          @height_ex_array << r.medium_image.url
+        elsif r.medium_image.width.to_i > 130
+          @width_ex_array << r.medium_image.url
+        end
+      end
+    rescue => e
+      @amazon_error = e
+    end
+
+    begin
+      brand_category = 0
+      brand_name = 'プラダ'
+      @rakuten_recommendations = RakutenSearch.item_search(brand_category, brand_name)
+    rescue  => e
+      @rakuten_error = e
+    end
+
   end
 
   # # GET /bikes/search/keyword

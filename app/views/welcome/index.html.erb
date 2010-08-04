@@ -1,3 +1,31 @@
 <h1><%= t('label.welcome.index') %></h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<p>Welcome to the jungle!</p>
+
+<% unless @amazon_recommendations.nil? %>
+  <% @amazon_recommendations.each do |r| %>
+    <% unless r.medium_image.nil? %>
+      <li>
+        <% if @height_ex_array.include?(r.medium_image.url) %>
+          <a href="<%= "#{r.detail_page_url}" %>" alt="<%= "#{r.item_attributes.title}" %>" target="blank" title="<%= "#{r.item_attributes.title}" %>">
+            <img class="height130" alt="<%= "#{r.item_attributes.title}" %>" src="<%= "#{r.medium_image.url}" %>" />
+          </a>
+        <% elsif @width_ex_array.include?(r.medium_image.url) %>
+          <a href="<%= "#{r.detail_page_url}" %>" alt="<%= "#{r.item_attributes.title}" %>" target="blank" title="<%= "#{r.item_attributes.title}" %>">
+            <img class="width130" alt="<%= "#{r.item_attributes.title}" %>" src="<%= "#{r.medium_image.url}" %>" />
+          </a>
+        <% else %>
+          <a href="<%= "#{r.detail_page_url}" %>" alt="<%= "#{r.item_attributes.title}" %>" target="blank" title="<%= "#{r.item_attributes.title}" %>">
+            <img class="height130" alt="<%= "#{r.item_attributes.title}" %>" src="<%= "#{r.medium_image.url}" %>" />
+          </a>
+        <% end %>
+      </li>
+    <% end %>
+  <% end %>
+<% end %>
+<% unless @rakuten_recommendations.nil? %>
+  <% @rakuten_recommendations.each do |r| %>
+    <li><%= link_to (image_tag r.image_url), "#{r.item_url}", :alt => "#{r.item_name}", :title => "#{r.item_name}", :target => :blank %></li>
+  <% end %>
+<% end %>
+
 <%#= will_paginate @posts %>
