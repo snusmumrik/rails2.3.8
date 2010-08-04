@@ -4,17 +4,17 @@
 			<ul>
 				<li id="search">
 					<h2>Search</h2>
-					<form method="get" action="">
-						<fieldset>
-							<input type="text" id="seach-text" name="s" value="" />
-							<input type="submit" id="search-submit" value="Search" />
-						</fieldset>
-					</form>
+					this is dummy
+					<% form_tag(:controller => "welcome", :method => "get") do %>
+					  <%= label_tag :q, t('label.search_for') %>
+            <%= text_field_tag :q, @keyword %>
+            <%= submit_tag t('link.search') %>
+          <% end %>
 				</li>
 				<li>
 					<h2>Side Menu</h2>
 					<ul>
-						<li><%= link_to t('link.home'), :controller => "welcome" %></li>
+						<li></li>
 					</ul>
 				</li>
 			</ul>

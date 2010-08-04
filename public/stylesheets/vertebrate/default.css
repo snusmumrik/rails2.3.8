@@ -177,13 +177,7 @@ a:hover {
 	padding: 2px 2px;
 }
 
-#search-text {
-	width: 100px;
-	border: 1px solid #000000;
-	color: #000000;
-}
-
-#search-submit {
+#search input[name="commit"] {
 	height: 21px;
 	margin-left: 10px;
 	padding: 0px 2px;

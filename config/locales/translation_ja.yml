@@ -18,6 +18,7 @@ ja:
         deleted_at: "で削除"  #g
 
   label:
+    search_for: "さがしもの"
     session:
       name: "ニックネーム"
       email: "メールアドレス"
@@ -46,6 +47,7 @@ ja:
     create: "作成"
     update: "更新"
     back: "戻る"
+    search: "検索"
 
     session:
       signup: "新規ユーザー登録"
