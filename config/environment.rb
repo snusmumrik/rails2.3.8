@@ -42,3 +42,6 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   config.i18n.default_locale = 'ja'
 end
+
+# simple date format definition
+Time::DATE_FORMATS[:simple] = "%Y/%m/%d<br />%H:%M:%S"

@@ -92,9 +92,9 @@ class UsersController < ApplicationController
       user = User.find_by_email(params[:user][:email])
       if user
         user.create_reset_code
-        flash[:notice] = "Reset code sent to #{user.email}"
+        flash[:notice] = t('notice.user.reset_code_sent') + " #{user.email}"
       else
-        flash[:notice] = "#{params[:user][:email]} does not exist in system"
+        flash[:notice] = t('error.user.this_address_does_not_exist_in_system') + " #{params[:user][:email]}"
       end
       redirect_back_or_default('/')
     end
@@ -106,7 +106,7 @@ class UsersController < ApplicationController
       if @user.update_attributes(:password => params[:user][:password], :password_confirmation => params[:user][:password_confirmation])
         self.current_user = @user
         @user.delete_reset_code
-        flash[:notice] = "Password reset successfully for #{@user.email}"
+        flash[:notice] = t('notice.user.password_reset_successfully') + " #{@user.email}"
         redirect_back_or_default('/')
       else
         render :action => :reset
