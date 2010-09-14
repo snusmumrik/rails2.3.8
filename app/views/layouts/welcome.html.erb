@@ -7,6 +7,21 @@
   <title>Welcome: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold' %>
 	<%= stylesheet_link_tag 'vertebrate/default' %>
+
+	<%# javascripts needed to be placed first %>
+  <%= javascript_include_tag "jquery-1.4.2.min" %>
+  <%= javascript_include_tag "jquery.lazyload" %>
+  <script type="text/javascript">
+  <!--
+  $(function(){
+  	$("img").lazyload({
+  		placeholder : "loading.gif",
+  		effect : "fadeIn"
+  	});
+  });
+  //-->
+  </script>
+
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 </head>
@@ -19,7 +34,7 @@
 			<h2><%= link_to 'subtitle', '#'%></h2>
 		</div>
 		<!-- end div#logo -->
-		<%= render :partial => "/layouts/menu" %>
+		<%= render :partial => "layouts/menu" %>
 	</div>
 	<div>
 		<div id="page">
@@ -39,7 +54,8 @@
 					</div>
 				</div>
 				<!-- end div#content -->
-				<%= render :partial => "/layouts/sidebar" %>
+				<%= render :partial => "layouts/bookmark" %>
+				<%= render :partial => "layouts/sidebar" %>
 			</div>
 		</div>
 		<!-- end div#page -->
@@ -49,6 +65,8 @@
 </html>
 
 <%# if File.exist?("/javascripts/" + controller.controller_path)%>
-	<%= javascript_include_tag "jquery-1.4.2.min.js" %>
 	<%= javascript_include_tag controller.controller_path %>
 <%# end %>
+
+<%= render :partial => "layouts/footer" %>
+<%= render :partial => "layouts/analytics" %>
