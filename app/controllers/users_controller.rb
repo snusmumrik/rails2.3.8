@@ -31,6 +31,11 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    unless owner_authorized?(@user.id)
+      flash[:error] = "You don't have access to this user."
+      # redirect_to(user_path(@user))
+      return
+    end
   end
 
   def create
@@ -79,6 +84,33 @@ class UsersController < ApplicationController
     else 
       flash[:error]  = t('error.user.we_couldn\'t_find_a_user_with_that_activation_code')
       redirect_back_or_default('/signin')
+    end
+  end
+
+  def forgot
+    if request.post?
+      user = User.find_by_email(params[:user][:email])
+      if user
+        user.create_reset_code
+        flash[:notice] = "Reset code sent to #{user.email}"
+      else
+        flash[:notice] = "#{params[:user][:email]} does not exist in system"
+      end
+      redirect_back_or_default('/')
+    end
+  end
+  
+  def reset
+    @user = User.find_by_reset_code(params[:reset_code]) unless params[:reset_code].nil?
+    if request.post?
+      if @user.update_attributes(:password => params[:user][:password], :password_confirmation => params[:user][:password_confirmation])
+        self.current_user = @user
+        @user.delete_reset_code
+        flash[:notice] = "Password reset successfully for #{@user.email}"
+        redirect_back_or_default('/')
+      else
+        render :action => :reset
+      end
     end
   end
 

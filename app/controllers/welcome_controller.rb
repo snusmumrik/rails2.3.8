@@ -1,5 +1,11 @@
 class WelcomeController < ApplicationController
   def index
+    # if /[^0-9]/ =~ params[:id]
+    #   @maker = Maker.first(:conditions => ["makername = ?", params[:id]])
+    # else 
+    #   @maker = Maker.find(params[:id])
+    # end
+
     # @posts = Posts.paginate(:all, 
     #                         :order => "updated_at DESC", 
     #                         :conditions => 'posts.deleted_at IS NULL',
