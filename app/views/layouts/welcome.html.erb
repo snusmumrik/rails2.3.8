@@ -6,7 +6,7 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Welcome: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold' %>
-	<%= stylesheet_link_tag 'vertebrate/default' %>
+	<%= stylesheet_link_tag 'default' %>
 
 	<%# javascripts needed to be placed first %>
   <%= javascript_include_tag "jquery-1.4.2.min" %>
@@ -25,42 +25,21 @@
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 </head>
+
 <body>
+	<%= render :partial => "layouts/user_navi" %>
+	<%= render :partial => "layouts/header" %>
 
-	<div id="wrapper">
-	<div id="header">
-		<div id="logo">
-			<h1><%= link_to 'Rails', '/' %></h1>
-			<h2><%= link_to 'subtitle', '#'%></h2>
+	<div id="page">
+		<div id="content">
+			<p style="color: green"><%= flash[:notice] %></p>
+			<p style="color: red"><%= flash[:error] %></p>
+			<p><%= yield %></p>
 		</div>
-		<!-- end div#logo -->
-		<%= render :partial => "layouts/menu" %>
+		<!-- end div#content -->
+		<%= render :partial => "layouts/sidebar" %>
 	</div>
-	<div>
-		<div id="page">
-			<div id="page-bgtop">
-				<div id="content">
-					<div class="post">
-						<div class="post-bgtop">
-							<div class="post-bgbtm">
-								<div class="entry">
-									<p style="color: green"><%= flash[:notice] %></p>
-									<p style="color: red"><%= flash[:error] %></p>
-
-									<p><%= yield %></p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- end div#content -->
-				<%= render :partial => "layouts/bookmark" %>
-				<%= render :partial => "layouts/sidebar" %>
-			</div>
-		</div>
-		<!-- end div#page -->
-	</div>
-	<!-- end div#wrapper -->
+	<!-- end div#page -->
 </body>
 </html>
 

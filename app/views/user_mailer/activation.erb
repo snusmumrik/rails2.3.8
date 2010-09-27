@@ -1,6 +1,4 @@
-your account has been activated.  Welcome aboard!
+こんにちは <% if @user.name %><%=h @user.name %><% else %><%=h @user.email %><% end %>さん,
+ようこそ！
 
 <%=h @url %>
-
-※このメールにお心当たりのない方は、大変ご迷惑をおかけいたしますが、
-本メールを破棄していただきますようお願いいたします。

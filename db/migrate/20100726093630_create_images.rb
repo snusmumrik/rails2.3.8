@@ -10,6 +10,7 @@ class CreateImages < ActiveRecord::Migration
       t.datetime :image_updated_at     # [Paperclip] (カラム名)_updated_at
 
       t.timestamps
+      t.column :deleted_at, :datetime
     end
   end
 

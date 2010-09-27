@@ -1,12 +1,7 @@
-Your account has been created.
+こんにちは <% if @user.name %><%=h @user.name %><% else %><%=h @user.email %><% end %>さん,
 
-Email: <%=h @user.email %>
-Password: <%=h @user.password %>
-
-Visit this url to activate your account:
-
+メールアドレスの確定には、こちらのリンクをクリックしてください。
 <%=h @url %>
-
 
 ※このメールにお心当たりのない方は、大変ご迷惑をおかけいたしますが、
 本メールを破棄していただきますようお願いいたします。

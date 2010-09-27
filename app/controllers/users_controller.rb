@@ -9,13 +9,18 @@ class UsersController < ApplicationController
   # login required except signup
   # before_filter :login_required , :except => [:new]
   before_filter :login_required , :only => [:edit, :update, :destroy]
+  before_filter :admin_authorized?, :only => [:index]
 
   layout 'welcome'
 
   # GET /users/1
   # GET /users/1.xml
   def show
-    @user = User.find(params[:id])
+    if /[^0-9]/ =~ params[:id]
+      @user = User.first(:conditions => ["name = ?", params[:id]])
+    else 
+      @user = User.find(params[:id])
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -30,7 +35,12 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    if /[^0-9]/ =~ params[:id]
+      @user = User.first(:conditions => ["name = ?", params[:id]])
+    else 
+      @user = User.find(params[:id])
+    end
+
     unless owner_authorized?(@user.id)
       flash[:error] = "You don't have access to this user."
       # redirect_to(user_path(@user))
@@ -47,7 +57,7 @@ class UsersController < ApplicationController
       redirect_back_or_default('/signin')
       flash[:notice] = t('notice.user.thanks_for_signing_up')
     else
-      flash[:error]  = t('error.user.we_couldn\'t_set_up_that_account')
+      flash[:error]  = t('error.user.we_could_not_set_up_that_account')
       render :action => 'new'
     end
   end
@@ -82,7 +92,7 @@ class UsersController < ApplicationController
       flash[:error] = t('error.user.the_activation_code_was_missing')
       redirect_back_or_default('/signin')
     else 
-      flash[:error]  = t('error.user.we_couldn\'t_find_a_user_with_that_activation_code')
+      flash[:error]  = t('error.user.we_could_not_find_a_user_with_that_activation_code')
       redirect_back_or_default('/signin')
     end
   end

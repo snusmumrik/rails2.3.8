@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20100914025925) do
     t.datetime "image_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   create_table "users", :force => true do |t|
@@ -34,9 +35,9 @@ ActiveRecord::Schema.define(:version => 20100914025925) do
     t.datetime "activated_at"
     t.string   "state",                                    :default => "passive"
     t.string   "reset_code",                :limit => 40
-    t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

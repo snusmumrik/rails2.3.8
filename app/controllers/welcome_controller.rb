@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   def index
     # if /[^0-9]/ =~ params[:id]
-    #   @maker = Maker.first(:conditions => ["makername = ?", params[:id]])
+    #   @maker = Maker.first(:conditions => ["name = ?", params[:id]])
     # else 
     #   @maker = Maker.find(params[:id])
     # end

@@ -76,6 +76,7 @@ module AuthenticatedSystem
       respond_to do |format|
         format.html do
           store_location
+          flash[:error] = t('error.user.you_do_not_have_access_to_this')
           redirect_to new_session_path
         end
         # format.any doesn't work in rails version < http://dev.rubyonrails.org/changeset/8987

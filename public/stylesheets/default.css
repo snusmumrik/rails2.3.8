@@ -1,9 +1,4 @@
-/*
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
-*/
-
+/* Basic */
 * {
 	margin: 0;
 	padding: 0;
@@ -57,13 +52,47 @@ a:hover {
 	color: #F40C42;
 }
 
-/* Wrapper */
+/* User Navi */
+#user_navi {
+  width: 40%;
+	padding: 10px 0px 10px 60%;
+}
 
-#wrapper {
+#user_navi ul {
+	margin: 0;
+	padding: 0px 0 0 20px;
+	list-style: none;
+	line-height: normal;
+	margin-left: 30px;
+}
+
+#user_navi li {
+	display: inline;
+	text-align: center;
+/*	font-size: 1.3em;*/
+}
+
+#user_navi a {
+/*	display: block;
+	float: left;*/
+	height: 55px;
+	margin-right: 1px;
+	padding: 35px 10px 0px 10px;
+	letter-spacing: -1px;
+	text-decoration: none;
+	text-align: center;
+	text-transform: lowercase;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	color: #383B3F;
+}
+
+#user_navi a:hover, #user_navi .active a {
+/*  background: #F40C42 repeat-x left bottom;*/
+	color: #F60;
 }
 
 /* Header */
-
 #header {
 	width: 100%;
 	height: 120px;
@@ -71,7 +100,12 @@ a:hover {
 	margin-right: auto;
 	margin-bottom: 0;
 	margin-left: auto;
-	background-color: #A1EEDA;
+  background-color: #A1EEDA;
+}
+
+#header hr {
+	clear: both;
+	width: 100%;
 }
 
 /* Logo */
@@ -113,158 +147,46 @@ a:hover {
 	color: #D9170E;
 }
 
-/* Menu */
-
-#menu {
+/* Title Navi */
+#title_navi {
+	position: absolute;
 	float: left;
-	width: 700px;
-	height: 90px;
+	margin: 50px 0px 5px 25%;
 }
 
-#menu ul {
-	margin: 0;
-	padding: 0px 0 0 20px;
-	list-style: none;
-	line-height: normal;
-	margin-left: 30px;
-}
-
-#menu li {
+#title_navi li {
 	display: inline;
-	text-align: center;
+	margin: 0px 20px;
 }
 
-#menu a {
-	display: block;
-	float: left;
-	height: 55px;
-	margin-right: 1px;
-	padding: 35px 10px 0px 10px;
-	letter-spacing: -1px;
+#title_navi a {
 	text-decoration: none;
-	text-align: center;
-	text-transform: lowercase;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 20px;
-	font-weight: normal;
-	color: #383B3F;
-}
-
-#menu a:hover, #menu .active a {
-	background: #F40C42 repeat-x left bottom;
-	color: #FFFFFF;
-}
-
-/* Search */
-
-#search {
-	padding: 0px 0px 40px 0px;
-}
-
-#search form {
-	margin: 0;
-	padding: 0;
-}
-
-#search fieldset {
-	margin: 0;
-	padding: 0;
-	border: none;
-}
-
-#search input {
-	float: left;
-	font: 11px Tahoma, Geneva, sans-serif;
-	padding: 2px 2px;
-}
-
-#search input[name="commit"] {
-	height: 21px;
-	margin-left: 10px;
-	padding: 0px 2px;
-	border: none;
-	background: #E71810;
-	color: #FFFFFF;
 }
 
 /* Page */
-
 #page {
 	width: 900px;
 	clear: both;
-	margin-top: 0;
-	margin-right: auto;
-	margin-bottom: 0;
-	margin-left: auto;
+	margin: 0 auto;
 	padding-top: 10px;
 }
 
 /* Content */
-
 #content {
 	float: right;
 	width: 630px;
 }
 
-.post-bgbtm {
+.entry {
 	padding: 50px 40px 30px 40px;
 }
 
-.post .title {
-	margin: 0px;
-	padding: 0px 0px 5px 0px;
-	color: #232F01;
-}
-
-.post .title a {
-	letter-spacing: -1px;
-	text-decoration: none;
-	text-transform: lowercase;
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: normal;
-	font-size: 32px;
-	color: #3A3D40;
-}
-
-.post .entry {
-}
-
-.post img {
-	float: left;
-	padding: 15px 0px;
-}
-
-.post .meta {
-}
-
-.post .more {
-	display: block;
-	width: 115px;
-	height: 32px;
-	padding: 8px 0px 0px 0px;
-	text-align: center;
-	text-transform: uppercase;
-	text-decoration: none;
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 11px;
-	font-weight: normal;
-	color: #FFFFFF;
-}
-
-.post .byline {
-	font-size: 11px;
-	font-style: italic;
-}
 
 /* Sidebar */
-
 #sidebar {
 	float: left;
-	width: 260px;
+	width: 180px;
 	font-size: 11px;
-}
-
-#sidebar-bgbtm {
 	padding: 40px 40px 20px 40px;
 }
 
@@ -327,14 +249,41 @@ a:hover {
 	color: #363636;
 }
 
-/* Submenu */
-
-#submenu {
+/* Search */
+#search {
+	padding: 0px 0px 40px 0px;
 }
 
-/* News */
+#search form {
+	margin: 0;
+	padding: 0;
+}
 
-#news {
+#search fieldset {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+#search input {
+	float: left;
+	font: 11px Tahoma, Geneva, sans-serif;
+	padding: 2px 2px;
+}
+
+#search input[name="commit"] {
+	height: 21px;
+	margin-left: 10px;
+	padding: 0px 2px;
+	border: none;
+	background: #E71810;
+	color: #FFFFFF;
+}
+
+/* Bookmark */
+#bookmark {
+	clear: both;
+	float: left;
 }
 
 #news a {
@@ -352,7 +301,7 @@ a:hover {
 	margin: 0 auto;
 	clear: both;
 	color: #757E82;
-	background-color: #A1EEDA;
+  background-color: #A1EEDA;
 }
 
 #footer p {
